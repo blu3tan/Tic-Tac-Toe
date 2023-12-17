@@ -1,9 +1,16 @@
 
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400&display=swap');
+
 :root {
     --color-left: hsl(4, 62%, 51%);
     --color-right: hsl(203, 66%, 45%);
+    --color-board: hsl(9, 16%, 84%);
+    --color-board-hover: hsl(9, 100%, 99%);
+    --border: solid 2px #212A2B;
+    --border-double: solid 4px #212A2B;
+    --text-color: hsl(186, 13%, 15%);
+    --text-color-hover: hsl(187, 13%, 24%);
 }
-
 
 /******************* General reset ********************/
 
@@ -17,12 +24,14 @@
     padding: 0;
 }
 body {
-    font-family: 'Sometype Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color) ;
     line-height: 1.5;
     font-size: 1rem;
     -webkit-font-smoothing: antialiased;
     height: 100dvh;
     background-color: var(--body-color);
+    position: relative;
 }
 img, picture, video, canvas, svg {
     display: block;
@@ -43,19 +52,29 @@ body {
     height: 100dvh;
     background-color: var(--color-right);
     position: relative;
-    z-index: 2;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/******************* Visibility trigger ********************/
+
+.title-screen.visible,
+.name-screen.visible {
+    visibility: inherit;
+}
+
+.title-screen.fade {
+    animation: fade-out 0.3s forwards;
 }
 
 /******************* Split background ********************/
-
-/* .background {
-    position: absolute;
-    z-index: 10;
-    margin: auto;
-    width: 100%;
-    height: 100%;
-    display: flex;
-} */
 
 .background-screen {
     position: absolute;
@@ -70,4 +89,104 @@ body {
 }
 .background-screen.loose {
     width: 0;
+}
+
+/******************* Title ********************/
+
+.title-screen {
+    visibility: hidden;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 500px;
+    height: 500px;
+    background-color:var(--color-board);
+    border: var(--border);
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.title-screen > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: var(--border);
+    user-select: none;
+
+    font-weight: 800;
+    font-size: 4rem;
+}
+
+.cell.cell-play {
+    font-size: 3rem;
+    background-color: var(--text-color);
+    color: var(--color-board);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.cell.cell-play:hover {
+    color: var(--color-board-hover);
+    background-color: var(--text-color-hover);
+}
+
+/******************* Name input ********************/
+
+.name-screen {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 500px;
+    height: 500px;
+    background-color:var(--color-board);
+    border: var(--border);
+}
+
+.name-form-box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.name-form-box > * {
+    height: 50%;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    border: var(--border);
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.name-form-box input{
+    font-size: 2rem;
+    font-weight: 600;
+    padding-inline: 2rem;
+}
+
+.name-form-box input::placeholder{
+    opacity: 0.5;
+}
+
+.name-form-box button {
+    font-size: 3rem;
+    background-color: var(--text-color);
+    color: var(--color-board);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.name-form-box button:hover {
+    color: var(--color-board-hover);
+    background-color: var(--text-color-hover);
 }
