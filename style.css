@@ -66,11 +66,16 @@ body {
 /******************* Visibility trigger ********************/
 
 .title-screen.visible,
-.name-screen.visible {
+.name-screen.visible,
+.board-screen.visible,
+.names.visible,
+.game-board.visible {
     visibility: inherit;
 }
 
-.title-screen.fade {
+
+.title-screen.fade,
+.name-screen.fade {
     animation: fade-out 0.3s forwards;
 }
 
@@ -139,6 +144,7 @@ body {
 /******************* Name input ********************/
 
 .name-screen {
+    visibility: hidden;
     position: absolute;
     z-index: 4;
     top: 0;
@@ -150,6 +156,7 @@ body {
     height: 500px;
     background-color:var(--color-board);
     border: var(--border);
+
 }
 
 .name-form-box {
@@ -172,10 +179,13 @@ body {
     font-size: 2rem;
     font-weight: 600;
     padding-inline: 2rem;
+    background-color: var(--color-board);
+
 }
 
 .name-form-box input::placeholder{
     opacity: 0.5;
+    background-color: var(--color-board);
 }
 
 .name-form-box button {
@@ -189,4 +199,46 @@ body {
 .name-form-box button:hover {
     color: var(--color-board-hover);
     background-color: var(--text-color-hover);
+}
+
+/******************* Board screen ********************/
+
+
+.names {
+    visibility: hidden;
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--color-board);
+    position: sticky;
+    width: 100%;
+    height: 150px;
+    user-select: none;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 5rem;
+}
+
+.names span {
+    text-shadow: 2px 3px 4px rgba(0,0,0,0.5);
+}
+
+.game-board {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 500px;
+    height: 500px;
+    background-color:var(--color-board);
+    border: var(--border);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px, rgba(0, 0, 0, 0.3) 0px 2px 2px, rgba(0, 0, 0, 0.3) 0px 4px 4px, rgba(0, 0, 0, 0.3) 0px 8px 8px, rgba(0, 0, 0, 0.3) 0px 16px 16px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 }

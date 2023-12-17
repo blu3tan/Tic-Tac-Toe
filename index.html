@@ -19,14 +19,19 @@
         <div class="cell">O</div>
         <div class="cell">E</div>
     </div>
-    <div class="name-screen">
+    <div class="name-screen visible">
         <form action="#" id="name-form" class="name-form-box">
             <!-- <label for="name">Insert your name</label> -->
-            <input id="name" name="name" type="text" placeholder="insert your name" required>
+            <input id="name" name="name" type="text" placeholder="insert your name" required maxlength="10">
             <button id="start-game" type="submit">START GAME</button>
         </form>
     </div>
-    <div class="board-screen"></div>
+    <div class="board-screen">
+        <div class="names">
+            <span id="player">BLU3</span><span id="bot">BOT</span>
+        </div>
+        <div class="game-board"></div>
+    </div>
     <div class="end-screen"></div>
   
 <script src="script.js"></script>
