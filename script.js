@@ -4,10 +4,14 @@ const nameScreen = document.querySelector('.name-screen');
 const boardScreen = document.querySelector('.board-screen');
 const gameScreen = document.querySelector('.game-board');
 const playerNames = document.querySelector('.names');
+const background = document.getElementById('background');
 const nameInput = document.getElementById('name');
 const nameForm = document.getElementById('name-form');
+const cover = document.getElementById('cover-screen');
 const playButton = document.getElementById('play');
 const startButton = document.getElementById('start-game');
+const provaButton = document.getElementById('prova');
+const restartButton = document.getElementById('restart-button');
 
 playButton.addEventListener('click', () => {
     titleScreen.classList.add('fade');
@@ -26,6 +30,22 @@ nameForm.addEventListener('submit', () => {
         }, 300)
     }
     event.preventDefault();
+});
+
+provaButton.addEventListener('click', () => {
+    gameScreen.classList.add('fade');
+    background.classList.add('win');
+    setTimeout(() => {
+        gameScreen.classList.remove('visible');
+    }, 300)
+});
+
+restartButton.addEventListener('click', () => {
+    cover.classList.add('visible');
+    cover.classList.add('fade-in');
+    setTimeout(() => {
+        window.location = window.location;
+    }, 350)
 });
 
 

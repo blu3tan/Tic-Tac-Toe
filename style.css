@@ -63,20 +63,30 @@ body {
     }
 }
 
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 /******************* Visibility trigger ********************/
 
-.title-screen.visible,
-.name-screen.visible,
-.board-screen.visible,
-.names.visible,
-.game-board.visible {
+div.visible {
     visibility: inherit;
 }
 
-
 .title-screen.fade,
-.name-screen.fade {
+.name-screen.fade,
+.game-board.fade,
+.cover.fade {
     animation: fade-out 0.3s forwards;
+}
+
+.cover.fade-in {
+    animation: fade-in 0.3s forwards;
 }
 
 /******************* Split background ********************/
@@ -96,12 +106,11 @@ body {
     width: 0;
 }
 
-/******************* Title ********************/
+/******************* General board styling ********************/
 
-.title-screen {
+.board-style {
     visibility: hidden;
     position: absolute;
-    z-index: 5;
     top: 0;
     right: 0;
     bottom: 0;
@@ -114,10 +123,11 @@ body {
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr); 
 }
 
-.title-screen > * {
+.board-style > *,
+.end-screen > * {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,6 +136,13 @@ body {
 
     font-weight: 800;
     font-size: 4rem;
+}
+
+/******************* Title ********************/
+
+.title-screen {
+    z-index: 5;
+    animation: fade-in 0.3s forwards;
 }
 
 .cell.cell-play {
@@ -225,8 +242,15 @@ body {
 }
 
 .game-board {
-    position: absolute;
     z-index: 3;
+}
+
+/******************* End screen ********************/
+
+.end-screen {
+    visibility: hidden;
+    position: absolute;
+    z-index: 2;
     top: 0;
     right: 0;
     bottom: 0;
@@ -236,9 +260,42 @@ body {
     height: 500px;
     background-color:var(--color-board);
     border: var(--border);
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px, rgba(0, 0, 0, 0.3) 0px 2px 2px, rgba(0, 0, 0, 0.3) 0px 4px 4px, rgba(0, 0, 0, 0.3) 0px 8px 8px, rgba(0, 0, 0, 0.3) 0px 16px 16px;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr); 
+
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px, rgba(0, 0, 0, 0.3) 0px 2px 2px, rgba(0, 0, 0, 0.3) 0px 4px 4px, rgba(0, 0, 0, 0.3) 0px 8px 8px, rgba(0, 0, 0, 0.3) 0px 16px 16px;
+}
+
+.restart {
+    grid-column: span 3;
+    font-size: 3rem;
+    background-color: var(--text-color);
+    color: var(--color-board);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.restart:hover {
+    color: var(--color-board-hover);
+    background-color: var(--text-color-hover);
+}
+
+/******************* Cover screen ********************/
+/* covers the screen while in the background the state is resetted */
+
+.cover {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color:var(--color-right);
 }

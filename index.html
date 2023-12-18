@@ -7,8 +7,9 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <div class="background-screen"></div>
-    <div class="title-screen visible">
+    <div id="background" class="background-screen"></div>
+    <div id="cover-screen" class="cover"></div>
+    <div class="title-screen visible board-style">
         <div class="cell">T</div>
         <div class="cell">I</div>
         <div class="cell">C</div>
@@ -30,9 +31,19 @@
         <div class="names">
             <span id="player">BLU3</span><span id="bot">BOT</span>
         </div>
-        <div class="game-board"></div>
+        <div class="game-board visible board-style">
+            <button id="prova"></button>
+        </div>
     </div>
-    <div class="end-screen"></div>
+    <div class="end-screen visible">
+        <div id="end-1" class="cell">Y</div>
+        <div id="end-2" class="cell">O</div>
+        <div id="end-3" class="cell">U</div>
+        <div class="cell">W</div>
+        <div class="cell">I</div>
+        <div class="cell">N</div>
+        <div id="restart-button" class="restart">RESTART</div>
+    </div>
   
 <script src="script.js"></script>
 </body>
