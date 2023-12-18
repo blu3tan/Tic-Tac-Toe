@@ -48,6 +48,13 @@ restartButton.addEventListener('click', () => {
     }, 350)
 });
 
+window.addEventListener('load', () => {
+    cover.classList.add('fade');
+    setTimeout(() => {
+        cover.classList.remove('visible');
+    }, 350)
+});
+
 
 // function boardWrapper() {
 //     const board = [
