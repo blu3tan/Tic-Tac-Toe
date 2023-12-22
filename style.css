@@ -5,6 +5,7 @@
     --color-left: hsl(4, 62%, 51%);
     --color-right: hsl(203, 66%, 45%);
     --color-board: hsl(9, 16%, 84%);
+    --color-board-highlight: hsl(0, 10%, 94%);
     --color-board-hover: hsl(9, 100%, 99%);
     --border: solid 2px #212A2B;
     --border-double: solid 4px #212A2B;
@@ -193,10 +194,12 @@ div.visible {
 }
 
 .name-form-box input{
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
     padding-inline: 2rem;
     background-color: var(--color-board);
+    color: var(--text-color);
 
 }
 
@@ -216,6 +219,10 @@ div.visible {
 .name-form-box button:hover {
     color: var(--color-board-hover);
     background-color: var(--text-color-hover);
+}
+
+.player-name {
+    text-transform: uppercase;
 }
 
 /******************* Board screen ********************/
@@ -243,6 +250,20 @@ div.visible {
 
 .game-board {
     z-index: 3;
+}
+
+.game-board > * {
+    font-size: 6rem;
+    transition: all 0.2s linear;
+}
+
+.game-board > *:hover {
+    background-color: var(--color-board-highlight);
+}
+
+.game-board > *:not(:empty) {
+    background-color: var(--color-left);
+    color: var(--color-board);
 }
 
 /******************* End screen ********************/
