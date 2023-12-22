@@ -1,0 +1,6 @@
+
+////////////////////////////// Game app module //////////////////////////////
+
+// This is the only object in the global scope
+
+const gameApp = {};
