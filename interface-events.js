@@ -1,5 +1,9 @@
 ////////////////////////////// Events binding module //////////////////////////////
 
+// Selects all the interface elements (except for the board cells)
+// and binds the event listeners to them
+// The name form button act as the actual game initializer
+
 (function() {
 
     const titleScreen = document.querySelector('.title-screen');
@@ -25,6 +29,7 @@
         if (nameInput.value !== '') {
             nameScreen.classList.add('fade');
             playerName.textContent = nameInput.value;
+            gameApp.beginGame();
             setTimeout(() => {
                 nameScreen.classList.remove('visible');
                 gameScreen.classList.add('visible');

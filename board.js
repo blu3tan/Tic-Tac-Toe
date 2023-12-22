@@ -20,9 +20,6 @@
                 if (square.textContent === '') {
                 square.textContent = 'X';
                 }
-                else {
-                    gameApp.clearBoard()
-                }
             })
         })
     }
