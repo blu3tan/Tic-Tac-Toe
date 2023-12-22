@@ -10,7 +10,7 @@ const nameForm = document.getElementById('name-form');
 const cover = document.getElementById('cover-screen');
 const playButton = document.getElementById('play');
 const startButton = document.getElementById('start-game');
-const provaButton = document.getElementById('prova');
+// const provaButton = document.getElementById('prova');
 const restartButton = document.getElementById('restart-button');
 
 playButton.addEventListener('click', () => {
@@ -32,13 +32,13 @@ nameForm.addEventListener('submit', () => {
     event.preventDefault();
 });
 
-provaButton.addEventListener('click', () => {
-    gameScreen.classList.add('fade');
-    background.classList.add('win');
-    setTimeout(() => {
-        gameScreen.classList.remove('visible');
-    }, 300)
-});
+// provaButton.addEventListener('click', () => {
+//     gameScreen.classList.add('fade');
+//     background.classList.add('win');
+//     setTimeout(() => {
+//         gameScreen.classList.remove('visible');
+//     }, 300)
+// });
 
 restartButton.addEventListener('click', () => {
     cover.classList.add('visible');
@@ -56,12 +56,40 @@ window.addEventListener('load', () => {
 });
 
 
-// function boardWrapper() {
-//     const board = [
-//         ['1', '2', '3'],
-//         ['4', '5', '6'],
-//         ['7', '8', '9']
-//     ];
-//         return {board};
-// }
-// const boardView = boardWrapper();
+//////////////////// Board module ////////////////////
+
+const gameApp = {};
+
+(function() {
+    const board = [
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+    ];
+
+    // draw game board from the array //
+    function drawBoard() {
+    const playBoard = document.getElementById('play-board');
+    board.flat().forEach((item) => {
+            const square = document.createElement('div');
+            square.textContent = item;
+            playBoard.appendChild(square);
+        })
+    }
+
+    function readBoard() {
+        return board;
+    }
+
+    function writeBoard(array = 0, index = 0, symbol = '') {
+        board[array][index] = symbol
+    }
+
+    // Methods exported and assigned to the global object
+    gameApp.readBoard = readBoard
+    gameApp.writeBoard = writeBoard
+    gameApp.drawBoard = drawBoard
+    
+})()
+
+gameApp.drawBoard();
