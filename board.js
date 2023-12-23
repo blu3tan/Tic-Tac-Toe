@@ -4,21 +4,21 @@
 (function() {
 
     const playBoard = document.getElementById('play-board');
-    let board = [
-        ['', '', ''],
-        ['', '', ''],
-        ['', '', '']
-    ];
+
+    let board = ['', '', '', '', '', '', '', '', ''];
 
     // draw game board from the array //
     function drawBoard() {
-    board.flat().forEach((item) => {
+    board.forEach((item, index) => {
             const square = document.createElement('div');
             square.textContent = item;
+            square.setAttribute('index', index);
             playBoard.appendChild(square);
-            square.addEventListener('click', () => {
+            square.addEventListener('click', (e) => {
                 if (square.textContent === '') {
-                square.textContent = 'X';
+                    square.textContent = 'X';
+                    writeBoard(index, 'X')
+                    console.log(board);
                 }
             })
         })
@@ -28,16 +28,12 @@
         return board;
     }
 
-    function writeBoard(array = 0, index = 0, symbol = '') {
-        board[array][index] = symbol
+    function writeBoard(index, symbol) {
+        board[index] = symbol
     }
 
     function clearBoard() {
-        board = [
-            ['', '', ''],
-            ['', '', ''],
-            ['', '', '']
-        ];
+        board = ['', '', '', '', '', '', '', '', ''];
 
         while (playBoard.firstChild) {
             playBoard.removeChild(playBoard.firstChild);
