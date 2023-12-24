@@ -17,7 +17,8 @@
 
     let winner;
     let currentPlayer;
-    let randomInitialPlayer = Math.floor(Math.random() * 2);
+    let roundCount = 0;
+
     
 
     const winCombo = [
@@ -38,6 +39,7 @@
             if (cell.textContent === '') {
                 cell.textContent = 'X';
                 gameApp.board_writeBoard(e.target.getAttribute('index'), 'X')
+                ++roundCount;
                 checkWinner();
                 currentPlayer = 'player';
                 checkTurn();
@@ -53,15 +55,11 @@
     });
 
     restartButton.addEventListener('click', () => {
-        console.log('reset')
-        // cover.classList.add('visible');
-        // cover.classList.add('fade-in');
+        cover.classList.add('visible');
+        cover.classList.add('fade-in');
         setTimeout(() => {
-            window.location = window.location;
+            window.location = window.location.origin;
         }, 250)
-        // cover.classList.remove('fade-in');
-        // cover.classList.add('fade');
-        // cover.classList.remove('visible');
         
     });
 
@@ -95,6 +93,7 @@
     }
 
     function firstTurn() {
+        let randomInitialPlayer = Math.floor(Math.random() * 2);
         randomInitialPlayer === 0 ? 
         playerTurn() :
         botTurn();
@@ -116,6 +115,7 @@
        const randomNumber = Math.floor(Math.random() * emptyCells.length);
        gameApp.board_writeBoard(emptyCells[randomNumber], 'O');
        gameApp.board_drawBoard();
+       ++roundCount;
        checkWinner();
        currentPlayer = 'bot';
        checkTurn();
@@ -130,6 +130,10 @@
                 winner = boardCopy[a];
                 displayWinner();
             }
+            else if (roundCount == 9){
+                winner = 'none';
+                displayWinner();
+            }
 
         })
     }
@@ -142,9 +146,15 @@
                 gameScreen.classList.remove('visible');
             }, 200)
         }
-        else {
+        else if (winner == 'O') {
             gameScreen.classList.add('fade');
             background.classList.add('loose');
+            setTimeout(() => {
+                gameScreen.classList.remove('visible');
+            }, 200)
+        }
+        else {
+            gameScreen.classList.add('fade');
             setTimeout(() => {
                 gameScreen.classList.remove('visible');
             }, 200)
