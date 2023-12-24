@@ -19,13 +19,13 @@
 
 
 
-    restartButton.addEventListener('click', () => {
-        cover.classList.add('visible');
-        cover.classList.add('fade-in');
-        setTimeout(() => {
-            window.location = window.location;
-        }, 350)
-    });
+    // restartButton.addEventListener('click', () => {
+    //     cover.classList.add('visible');
+    //     cover.classList.add('fade-in');
+    //     setTimeout(() => {
+    //         window.location = window.location;
+    //     }, 350)
+    // });
     
 
 

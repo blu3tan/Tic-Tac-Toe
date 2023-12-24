@@ -10,17 +10,17 @@
     // draw game board from the array //
     function drawBoard() {
     board.forEach((item, index) => {
-            const square = document.createElement('div');
-            square.textContent = item;
-            square.setAttribute('index', index);
-            playBoard.appendChild(square);
-            square.addEventListener('click', ()  => {
-                if (square.textContent === '') {
-                    square.textContent = 'X';
-                    writeBoard(index, 'X')
-                    gameApp.flow_checkWinner();
-                }
-            })
+            const cells = document.querySelectorAll('.cell-mark');
+            cells[index].textContent = item;
+            // square.setAttribute('index', index);
+            // playBoard.appendChild(square);
+            // square.addEventListener('click', ()  => {
+            //     if (square.textContent === '') {
+            //         square.textContent = 'X';
+            //         writeBoard(index, 'X')
+            //         gameApp.flow_checkWinner();
+            //     }
+            // })
         })
     }
 

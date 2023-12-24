@@ -11,6 +11,7 @@
     const playerNames = document.querySelector('.names');
     const gameScreen = document.querySelector('.game-board');
     const titleScreen = document.querySelector('.title-screen');
+    const cells = document.querySelectorAll('.cell-mark');
     const playButton = document.getElementById('play');
     const restartButton = document.getElementById('restart-button');
 
@@ -30,6 +31,16 @@
     ];
 
 //////////////////// Bind listeners to interface buttons ////////////////////
+
+    cells.forEach((cell) => {
+        cell.addEventListener('click', (e)  => {
+            if (cell.textContent === '') {
+                cell.textContent = 'X';
+                gameApp.board_writeBoard(e.target.getAttribute('index'), 'X')
+                gameApp.flow_checkWinner();
+            }
+    })
+    })
 
     playButton.addEventListener('click', () => {
         titleScreen.classList.add('fade');
@@ -87,8 +98,18 @@
     }
 
     function botTurn() {
+       // cover.classList.add('visible');
+       let emptyCells = [];
+       const boardCopy = gameApp.board_readBoard();
+       boardCopy.forEach((item, index) => {
+        if (item == '') {
+            emptyCells.push(index);
+        }
+       })
+       const randomNumber = Math.floor(Math.random() * emptyCells.length);
+       gameApp.board_writeBoard(emptyCells[randomNumber], 'O');
+       gameApp.board_drawBoard();
 
-        // cover.classList.add('visible');
     }
 
     function checkWinner() {
