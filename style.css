@@ -201,7 +201,6 @@ div.visible {
     background-color: var(--color-board);
     color: var(--text-color);
     text-align: center;
-
 }
 
 .name-form-box input::placeholder{

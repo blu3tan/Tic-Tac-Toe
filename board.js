@@ -14,11 +14,11 @@
             square.textContent = item;
             square.setAttribute('index', index);
             playBoard.appendChild(square);
-            square.addEventListener('click', (e) => {
+            square.addEventListener('click', ()  => {
                 if (square.textContent === '') {
                     square.textContent = 'X';
                     writeBoard(index, 'X')
-                    console.log(board);
+                    gameApp.flow_checkWinner();
                 }
             })
         })
@@ -38,15 +38,16 @@
         while (playBoard.firstChild) {
             playBoard.removeChild(playBoard.firstChild);
         }
-        gameApp.drawBoard()
+        gameApp.board_drawBoard()
     }
 
     // Methods exported and assigned to the global object
-    gameApp.readBoard = readBoard
-    gameApp.writeBoard = writeBoard
-    gameApp.drawBoard = drawBoard
-    gameApp.clearBoard = clearBoard
+    gameApp.board_readBoard = readBoard
+    gameApp.board_writeBoard = writeBoard
+    gameApp.board_drawBoard = drawBoard
+    gameApp.board_clearBoard = clearBoard
 
-    gameApp.drawBoard();
+    drawBoard();
+   
     
 })()
