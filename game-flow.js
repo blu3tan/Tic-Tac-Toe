@@ -104,7 +104,7 @@
     }
 
     function botTurn() {
-       // cover.classList.add('visible');
+       cover.classList.add('visible');
        let emptyCells = [];
        const boardCopy = gameApp.board_readBoard();
        boardCopy.forEach((item, index) => {
@@ -113,12 +113,15 @@
         }
        })
        const randomNumber = Math.floor(Math.random() * emptyCells.length);
-       gameApp.board_writeBoard(emptyCells[randomNumber], 'O');
-       gameApp.board_drawBoard();
+        setTimeout(() => {
+            gameApp.board_writeBoard(emptyCells[randomNumber], 'O');
+            gameApp.board_drawBoard();
+        }, 200)
        ++roundCount;
        checkWinner();
        currentPlayer = 'bot';
        checkTurn();
+       cover.classList.remove('visible');
 
     }
 
@@ -130,12 +133,12 @@
                 winner = boardCopy[a];
                 displayWinner();
             }
-            else if (roundCount == 9){
-                winner = 'none';
-                displayWinner();
-            }
-
         })
+        
+        if (roundCount == 9){
+            winner = 'tie';
+            displayWinner();
+        }
     }
 
     function displayWinner() {

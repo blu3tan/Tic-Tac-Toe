@@ -82,7 +82,8 @@ div.visible {
 .title-screen.fade,
 .name-screen.fade,
 .game-board.fade,
-.cover.fade {
+.cover.fade,
+.names.fade {
     animation: fade-out 0.2s forwards;
 }
 
@@ -318,5 +319,5 @@ div.visible {
     margin: auto;
     width: 100%;
     height: 100%;
-    background-color:darkolivegreen;
+    background-color:var(--color-left);
 }
