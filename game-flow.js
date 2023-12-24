@@ -15,7 +15,8 @@
     const playButton = document.getElementById('play');
     const restartButton = document.getElementById('restart-button');
 
-    let currentTurn;
+    let winner;
+    let currentPlayer;
     let randomInitialPlayer = Math.floor(Math.random() * 2);
     
 
@@ -37,7 +38,9 @@
             if (cell.textContent === '') {
                 cell.textContent = 'X';
                 gameApp.board_writeBoard(e.target.getAttribute('index'), 'X')
-                gameApp.flow_checkWinner();
+                checkWinner();
+                currentPlayer = 'player';
+                checkTurn();
             }
     })
     })
@@ -46,45 +49,49 @@
         titleScreen.classList.add('fade');
         setTimeout(() => {
             titleScreen.classList.remove('visible');
-        }, 300)
+        }, 200)
     });
 
     restartButton.addEventListener('click', () => {
-        cover.classList.add('visible');
-        cover.classList.add('fade-in');
+        console.log('reset')
+        // cover.classList.add('visible');
+        // cover.classList.add('fade-in');
         setTimeout(() => {
             window.location = window.location;
-        }, 350)
+        }, 250)
+        // cover.classList.remove('fade-in');
+        // cover.classList.add('fade');
+        // cover.classList.remove('visible');
+        
     });
 
     window.addEventListener('load', () => {
         cover.classList.add('fade');
         setTimeout(() => {
             cover.classList.remove('visible');
-        }, 350)
+        }, 250)
     });
 
     nameForm.addEventListener('submit', () => {
+        event.preventDefault();
         if (nameInput.value !== '') {
             nameScreen.classList.add('fade');
             playerName.textContent = nameInput.value;
             firstTurn();
-            // listenForClick();
             setTimeout(() => {
                 nameScreen.classList.remove('visible');
                 gameScreen.classList.add('visible');
                 playerNames.classList.add('visible');
-            }, 300)
+            }, 200)
         }
-        event.preventDefault();
     });
 
 ////////////////////////////////////////////////////////////////////////////////
 
     function checkTurn() {
-        currentTurn == 'player' ?
-        playerTurn() :
-        botTurn();
+        currentPlayer == 'player' ?
+        botTurn() :
+        playerTurn();
     }
 
     function firstTurn() {
@@ -94,7 +101,7 @@
     }
 
     function playerTurn() {
-        console.log('Player moves first');
+        
     }
 
     function botTurn() {
@@ -109,6 +116,9 @@
        const randomNumber = Math.floor(Math.random() * emptyCells.length);
        gameApp.board_writeBoard(emptyCells[randomNumber], 'O');
        gameApp.board_drawBoard();
+       checkWinner();
+       currentPlayer = 'bot';
+       checkTurn();
 
     }
 
@@ -117,10 +127,28 @@
         winCombo.forEach((combo) => {
             const [a, b, c] = combo;
             if (boardCopy[a] && boardCopy[a] == boardCopy[b] && boardCopy[a] == boardCopy[c]) {
-                    console.log('win');
+                winner = boardCopy[a];
+                displayWinner();
             }
 
         })
+    }
+
+    function displayWinner() {
+        if (winner == 'X') {
+            gameScreen.classList.add('fade');
+            background.classList.add('win');
+            setTimeout(() => {
+                gameScreen.classList.remove('visible');
+            }, 200)
+        }
+        else {
+            gameScreen.classList.add('fade');
+            background.classList.add('loose');
+            setTimeout(() => {
+                gameScreen.classList.remove('visible');
+            }, 200)
+        }
     }
 
     

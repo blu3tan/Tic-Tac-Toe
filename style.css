@@ -83,11 +83,11 @@ div.visible {
 .name-screen.fade,
 .game-board.fade,
 .cover.fade {
-    animation: fade-out 0.3s forwards;
+    animation: fade-out 0.2s forwards;
 }
 
 .cover.fade-in {
-    animation: fade-in 0.3s forwards;
+    animation: fade-in 0.2s forwards;
 }
 
 /******************* Split background ********************/
@@ -97,7 +97,7 @@ div.visible {
     background-color: var(--color-left);
     width: 50%;
     height: 100%;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
 }
 
 .background-screen.win {
@@ -143,7 +143,7 @@ div.visible {
 
 .title-screen {
     z-index: 5;
-    animation: fade-in 0.3s forwards;
+    animation: fade-in 0.2s forwards;
 }
 
 .cell.cell-play {
@@ -318,5 +318,5 @@ div.visible {
     margin: auto;
     width: 100%;
     height: 100%;
-    background-color:var(--color-right);
+    background-color:darkolivegreen;
 }
