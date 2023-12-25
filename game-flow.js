@@ -37,12 +37,14 @@
     cells.forEach((cell) => {
         cell.addEventListener('click', (e)  => {
             if (cell.textContent === '') {
+                cell.classList.add('red')
                 cell.textContent = 'X';
                 gameApp.board_writeBoard(e.target.getAttribute('index'), 'X')
                 ++roundCount;
                 checkWinner();
-                currentPlayer = 'player';
-                checkTurn();
+                gameOver();
+                // currentPlayer = 'player';
+                // checkTurn();
             }
     })
     })
@@ -126,7 +128,6 @@
     }
 
     function checkWinner() {
-        console.log('check')
         const boardCopy = gameApp.board_readBoard();
         winCombo.forEach((combo) => {
             const [a, b, c] = combo;
@@ -143,25 +144,41 @@
     }
 
     function displayWinner() {
+        playerNames.classList.add('fade');
         if (winner == 'X') {
-            gameScreen.classList.add('fade');
-            background.classList.add('win');
+            setTimeout(() => {
+                cover.style.backgroundColor = '#d03f35';
+                gameScreen.classList.add('fade');
+                background.classList.add('win');
+            }, 550)
+
             setTimeout(() => {
                 gameScreen.classList.remove('visible');
-            }, 200)
+            }, 600)
         }
         else if (winner == 'O') {
+            cover.style.backgroundColor ='#2784be'
             gameScreen.classList.add('fade');
             background.classList.add('loose');
             setTimeout(() => {
                 gameScreen.classList.remove('visible');
-            }, 200)
+            }, 600)
         }
         else {
             gameScreen.classList.add('fade');
             setTimeout(() => {
                 gameScreen.classList.remove('visible');
-            }, 200)
+            }, 600)
+        }
+    }
+
+    function gameOver() {
+        if (winner) {
+            return
+        }
+        else {
+            currentPlayer = 'player';
+            checkTurn();
         }
     }
 

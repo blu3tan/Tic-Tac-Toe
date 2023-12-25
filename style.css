@@ -264,9 +264,15 @@ div.visible {
 }
 
 .game-board > *:not(:empty) {
+    background-color: var(--color-right);
+    color: var(--color-board);
+}
+
+.game-board > *.red {
     background-color: var(--color-left);
     color: var(--color-board);
 }
+
 
 /******************* End screen ********************/
 
@@ -319,5 +325,5 @@ div.visible {
     margin: auto;
     width: 100%;
     height: 100%;
-    background-color:var(--color-left);
+    /* background-color:var(--color-left); */
 }
