@@ -22,11 +22,7 @@
 
     function clearBoard() {
         board = ['', '', '', '', '', '', '', '', ''];
-
-        while (playBoard.firstChild) {
-            playBoard.removeChild(playBoard.firstChild);
-        }
-        gameApp.board_drawBoard()
+        drawBoard()
     }
 
     // Methods exported and assigned to the global object
@@ -37,5 +33,4 @@
 
     drawBoard();
    
-    
 })()

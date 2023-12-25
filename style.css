@@ -320,10 +320,25 @@ div.visible {
 }
 
 /******************* Cover screen ********************/
-/* covers the screen while in the background the state is resetted */
+/* used to prevent interaction with the board while is bot turn */
 
 .cover {
     visibility: hidden;
+    position: absolute;
+    z-index: 15;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+/******************* Curtain ********************/
+/* covers the screen while in the background the state is resetted */
+
+.curtain {
     position: absolute;
     z-index: 10;
     top: 0;
@@ -333,5 +348,16 @@ div.visible {
     margin: auto;
     width: 100%;
     height: 100%;
-    /* background-color:var(--color-left); */
+    background-color: var(--color-board);
+    transition: transform 300ms ease-in-out;
+}
+
+.curtain.up {
+    transform: translateY(-100dvh);
+    transition: transform 300ms ease-in-out;
+}
+
+.curtain.up.drop {
+    transform: translateY(0);
+    transition: transform 300ms ease-in-out;
 }
