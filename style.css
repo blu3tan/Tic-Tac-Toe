@@ -244,13 +244,13 @@ div.visible {
     align-items: center;
     padding-inline: 5rem;
     transform: translateY(-30dvh);
-    transition: transform 350ms ease-in-out;
+    transition: transform 300ms ease-in-out;
     
 }
 
 .names.drop {
     transform: translateY(0);
-    transition: transform 350ms ease-in-out;
+    transition: transform 300ms ease-in-out;
 }
 
 .names span {

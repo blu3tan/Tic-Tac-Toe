@@ -119,7 +119,7 @@
             gameApp.board_drawBoard();
             ++roundCount;
             checkWinner();
-        }, 200)
+        }, 300)
        currentPlayer = 'bot';
        checkTurn();
        cover.classList.remove('visible');
@@ -164,6 +164,7 @@
                 background.classList.add('loose');
             }, 550)
             setTimeout(() => {
+                botWinText();
                 gameScreen.classList.remove('visible');
                 cover.classList.remove('visible');
             }, 600)
@@ -175,6 +176,7 @@
                 gameScreen.classList.add('fade');
             }, 550)
             setTimeout(() => {
+                tieText();
                 gameScreen.classList.remove('visible');
                 cover.classList.remove('visible');
             }, 600)
@@ -189,6 +191,21 @@
             currentPlayer = 'player';
             checkTurn();
         }
+    }
+
+    function botWinText() {
+        const letter1 = document.getElementById('end-1').textContent = 'B';
+        const letter2 = document.getElementById('end-2').textContent = 'O';
+        const letter3 = document.getElementById('end-3').textContent = 'T';
+    }
+
+    function tieText() {
+        const letter1 = document.getElementById('end-1').textContent = 'T';
+        const letter2 = document.getElementById('end-2').textContent = 'I';
+        const letter3 = document.getElementById('end-3').textContent = 'E';
+        const letter4 = document.getElementById('end-4').textContent = '';
+        const letter5 = document.getElementById('end-5').textContent = '';
+        const letter6 = document.getElementById('end-6').textContent = '';
     }
 
     
