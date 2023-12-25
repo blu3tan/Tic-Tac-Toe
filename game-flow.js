@@ -43,8 +43,6 @@
                 ++roundCount;
                 checkWinner();
                 gameOver();
-                // currentPlayer = 'player';
-                // checkTurn();
             }
     })
     })
@@ -82,6 +80,7 @@
                 nameScreen.classList.remove('visible');
                 gameScreen.classList.add('visible');
                 playerNames.classList.add('visible');
+                playerNames.classList.add('drop');
             }, 200)
         }
     });
@@ -144,7 +143,7 @@
     }
 
     function displayWinner() {
-        playerNames.classList.add('fade');
+        playerNames.classList.remove('drop');
         if (winner == 'X') {
             setTimeout(() => {
                 cover.style.backgroundColor = '#d03f35';
@@ -157,17 +156,27 @@
             }, 600)
         }
         else if (winner == 'O') {
-            cover.style.backgroundColor ='#2784be'
-            gameScreen.classList.add('fade');
-            background.classList.add('loose');
+            playerNames.classList.remove('drop');
+            cover.classList.add('visible');
+            setTimeout(() => {
+                cover.style.backgroundColor ='#2784be'
+                gameScreen.classList.add('fade');
+                background.classList.add('loose');
+            }, 550)
             setTimeout(() => {
                 gameScreen.classList.remove('visible');
+                cover.classList.remove('visible');
             }, 600)
         }
         else {
-            gameScreen.classList.add('fade');
+            playerNames.classList.remove('drop');
+            cover.classList.add('visible');
+            setTimeout(() => {
+                gameScreen.classList.add('fade');
+            }, 550)
             setTimeout(() => {
                 gameScreen.classList.remove('visible');
+                cover.classList.remove('visible');
             }, 600)
         }
     }
