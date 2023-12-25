@@ -116,9 +116,9 @@
         setTimeout(() => {
             gameApp.board_writeBoard(emptyCells[randomNumber], 'O');
             gameApp.board_drawBoard();
+            ++roundCount;
+            checkWinner();
         }, 200)
-       ++roundCount;
-       checkWinner();
        currentPlayer = 'bot';
        checkTurn();
        cover.classList.remove('visible');
@@ -126,6 +126,7 @@
     }
 
     function checkWinner() {
+        console.log('check')
         const boardCopy = gameApp.board_readBoard();
         winCombo.forEach((combo) => {
             const [a, b, c] = combo;
@@ -134,7 +135,7 @@
                 displayWinner();
             }
         })
-        
+
         if (roundCount == 9){
             winner = 'tie';
             displayWinner();
