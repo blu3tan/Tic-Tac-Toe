@@ -4,10 +4,12 @@
 <a href="https://blu3tan.github.io/Tic-Tac-Toe/">
 <img src="./assets/Tic-Tac-Toe.gif">
 </a>
-</br>
+
+
+</div>
+<div align="center">
 Game developed for the Odin Project Javascript curriculum
 [Live Demo](https://blu3tan.github.io/Tic-Tac-Toe/)
-
 </div>
 
 
@@ -22,6 +24,8 @@ The ai is very basic, the bot just select a random empty spot on the board
 
 The game is fully mobile responsive and tested on chrome and safari.
 
+
+
 # Modular game logic #
 
 The focus of this exercise was to develop the code hiding as much as possible
@@ -32,6 +36,8 @@ for the game flow, with the ui interaction and the game stages.
 
 The third script contains the only exposed object **GameApp** with the methods
 revealed from the other modules added as properties
+
+
 
 # Visual and ux #
 
