@@ -32,5 +32,4 @@
     gameApp.board_clearBoard = clearBoard
 
     drawBoard();
-   
 })()

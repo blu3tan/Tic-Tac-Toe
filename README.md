@@ -12,6 +12,11 @@ Game developed for the Odin Project Javascript curriculum
 
 # Concept #
 
+The main idea for this project was to keep the ui simple but not boring, 
+so i thought to make the board as the only interactive object of the app.
+To achieve such minimal style i made the background part of the game ui 
+to reinforce the end game state and visuals.
+
 Started this project with very little inspiration, instead it turned out to be
 a very engaging and fun experience both from the coding and visual aspect.
 
