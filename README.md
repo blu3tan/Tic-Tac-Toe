@@ -5,12 +5,9 @@
 <img src="./assets/Tic-Tac-Toe.gif">
 </a>
 
-
-</div>
-<div align="center">
 Game developed for the Odin Project Javascript curriculum
 [Live Demo](https://blu3tan.github.io/Tic-Tac-Toe/)
-</div>
+
 
 
 # Concept #
