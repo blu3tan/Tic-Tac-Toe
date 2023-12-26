@@ -4,10 +4,11 @@
 <a href="https://blu3tan.github.io/Tic-Tac-Toe/">
 <img src="./assets/Tic-Tac-Toe.gif">
 </a>
-</div>
 
 Game developed for the Odin Project Javascript curriculum
 [Live Demo](https://blu3tan.github.io/Tic-Tac-Toe/)
+
+</div>
 
 ------------------------------------------------------------
 
