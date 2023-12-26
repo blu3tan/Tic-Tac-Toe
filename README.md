@@ -4,13 +4,12 @@
 <a href="https://blu3tan.github.io/Tic-Tac-Toe/">
 <img src="./assets/Tic-Tac-Toe.gif">
 </a>
-
+</br>
 Game developed for the Odin Project Javascript curriculum
 [Live Demo](https://blu3tan.github.io/Tic-Tac-Toe/)
 
 </div>
 
-------------------------------------------------------------
 
 # Concept #
 
@@ -28,7 +27,7 @@ The game is fully mobile responsive and tested on chrome and safari.
 The focus of this exercise was to develop the code hiding as much as possible
 from the global scope using factories and IIFEs
 I have splitted the logic on 2 different scripts, one for the board with the
-rendering functions and the main board array containing the game state, another
+rendering functions and the board array containing the game state, another
 for the game flow, with the ui interaction and the game stages.
 
 The third script contains the only exposed object **GameApp** with the methods
@@ -40,10 +39,18 @@ I wanted to mimic a real game app experience using only vanilla JS and CSS
 The end result is a very clean and minimal ui and a smooth ux.
 The layout adopted to achieve this is actually a little complex (nothing outrageous tho)
 
-Basically the whole game is made by 4 boards, each one containing one stage of the app:
+Basically the whole game is made by 4 boards, each one containing one stage of the app:</br>
 **Start screen** - **Name input** - **Playable board** - **End screen**
 
 <div align="center">
 <img src="./assets/Tic_Tac_Toe_layers.jpg">
 </div>
+
+As the user interacts with the ui, the game flow controller hides the precedent stage revealing 
+the one below.
+When the game ends the final stage show a custom message based on the 3 end conditions, win, loose, tie.
+
+On restart i have used a "curtain" to hide all the ui while the app in the background is resetting to the initial stage.
+
+-----------------------------------------------------------------------------
 
