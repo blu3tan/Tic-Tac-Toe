@@ -138,7 +138,7 @@
             gameApp.board_drawBoard();
             ++roundCount;
             checkWinner();
-        }, 300)
+        }, 400)
     }
 
     function checkWinner() {
