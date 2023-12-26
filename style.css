@@ -8,7 +8,7 @@
     --color-board-highlight: hsl(0, 10%, 94%);
     --color-board-hover: hsl(9, 100%, 99%);
     --border: solid 2px #212A2B;
-    --border-double: solid 4px #212A2B;
+    --border-mobile: solid 1px #212A2B;
     --text-color: hsl(186, 13%, 15%);
     --text-color-hover: hsl(187, 13%, 24%);
 }
@@ -31,7 +31,7 @@ body {
     font-size: 1rem;
     -webkit-font-smoothing: antialiased;
     height: 100dvh;
-    background-color: var(--body-color);
+    background-color: var(--color-right);
     position: relative;
 }
 img, picture, video, canvas, svg {
@@ -46,14 +46,12 @@ h1 {
     font-weight: 700;
     font-size: 3rem;
 }
+a {
+    text-decoration: none;
+    color: var(--color-board);
+}
 
 /******************* General style ********************/
-
-body {
-    height: 100dvh;
-    background-color: var(--color-right);
-    position: relative;
-}
 
 @keyframes fade-out {
     0% {
@@ -122,6 +120,7 @@ div.visible {
     height: 500px;
     background-color:var(--color-board);
     border: var(--border);
+    user-select: none;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -274,6 +273,7 @@ div.visible {
 .game-board > *:not(:empty) {
     background-color: var(--color-right);
     color: var(--color-board);
+    
 }
 
 .game-board > *.red {
@@ -325,7 +325,7 @@ div.visible {
 .cover {
     visibility: hidden;
     position: absolute;
-    z-index: 15;
+    z-index: 10;
     top: 0;
     right: 0;
     bottom: 0;
@@ -340,7 +340,7 @@ div.visible {
 
 .curtain {
     position: absolute;
-    z-index: 10;
+    z-index: 15;
     top: 0;
     right: 0;
     bottom: 0;
@@ -360,4 +360,74 @@ div.visible {
 .curtain.up.drop {
     transform: translateY(0);
     transition: transform 300ms ease-in-out;
+}
+
+.credits {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.credits > * {
+    color: var(--color-board);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+@media (max-width: 500px) {
+    .board-style,
+    .name-screen,
+    .end-screen {
+        width: 300px;
+        height: 300px;
+        border: var(--border-mobile);
+    }
+
+    .cell.cell-play {
+        font-size: 1.7rem;
+    }
+
+    .background-screen {
+        width: 50%;
+        height: 100dvh;
+        transition: all 0.3s ease;
+    }
+
+    .name-form-box > * {
+        font-size: 2rem;
+        font-weight: 800;
+    }
+
+    .names {
+        font-size: 2rem;
+        padding-inline: 1rem;
+    }
+
+    .name-form-box input,
+    .name-form-box button {
+        font-size: 2rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        padding-inline: 1rem;
+    }
+
+    .game-board > * {
+        font-size: 3.6rem;
+    }
+
+    .board-style > *,
+    .end-screen > * {
+        border: var(--border-mobile);
+        font-size: 3rem;
+}
 }
